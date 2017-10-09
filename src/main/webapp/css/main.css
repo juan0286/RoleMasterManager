@@ -52,7 +52,7 @@ box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75);
 .jugadorItem{
     display: block;
     background-color: activeborder;
-    width: 80%;
+    width: 50%;
     /*height: 75px;*/
     padding-bottom: 3px;
     padding-top: 3px;
