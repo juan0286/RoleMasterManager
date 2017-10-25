@@ -5,9 +5,11 @@
  */
 package com.capitanesdegondor.rolemastermanager.validations;
 
+import com.capitanesdegondor.rolemastermanager.service.beans.NuevoUsuarioJugador;
 import com.websystique.spring.HibernateDao;
 import com.websystique.spring.model.BonoExp;
 import com.websystique.spring.model.Campaign;
+import com.websystique.spring.model.Jugador;
 import com.websystique.spring.model.Master;
 import com.websystique.spring.model.Mundo;
 import com.websystique.spring.model.Personaje;
@@ -58,12 +60,12 @@ public class Validations {
 
     public static HiberRespuesta validarVerCampaign(String idCampaign) {
         long id = Long.parseLong(idCampaign, 10);
-        
+
         HiberRespuesta hr = new HiberRespuesta();
-        String vacio = "Esta Campaña actualmente no existe.";        
-        
+        String vacio = "Esta Campaña actualmente no existe.";
+
         Campaign c = HibernateDao.obtenerCampaignPorId(id);
-        
+
         if (c == null) {
             hr.setSuccess(false);
             hr.setResponse(vacio);
@@ -73,6 +75,7 @@ public class Validations {
         hr.setSuccess(true);
         return hr;
     }
+
     public static HiberRespuesta validarNuevaCampaign(String nombreCampaign, String nombreMundo, String fechaMundo, Master m) {
 
         HiberRespuesta hr = new HiberRespuesta();
@@ -122,9 +125,9 @@ public class Validations {
         cNew.setNombre(nombreCampaign);
         cNew.setMundo(mundo);
 
-        if (!HibernateDao.CrearCampaignYAddAlMaster(cNew,m)) {
+        if (!HibernateDao.CrearCampaignYAddAlMaster(cNew, m)) {
             hr.setSuccess(false);
-            hr.setResponse(errorGuardado);            
+            hr.setResponse(errorGuardado);
             return hr;
         }
         hr.setSuccess(true);
@@ -132,13 +135,62 @@ public class Validations {
         return hr;
     }
 
-    public static HiberRespuesta validarBonoExperienca(Integer bono, String motivo, Personaje pj) {
-     
+    public static HiberRespuesta crearNuevoJugador(NuevoUsuarioJugador nuj) {
+        HiberRespuesta hr = new HiberRespuesta();
+        String sinID = "no tiene Id";
+        String sinEmail = "no tiene Email";
+
+        // Validar Id de firebase
+        if (nuj.getId_firebase().trim().equals("")) {
+            hr.setResponse(sinID);
+            hr.setSuccess(false);
+            return hr;
+        }
+
+        // Validar Email
+        if (nuj.getEmail().trim().equals("")) {
+            hr.setResponse(sinEmail);
+            hr.setSuccess(false);
+            return hr;
+        }
+
+        //Personaje pj = HibernateDao.obtenerPersonajePorId(Long.parseLong(idpj));
+        if (nuj == null) {
+            hr.setResponse("");
+            hr.setSuccess(false);
+            return hr;
+        }
         
+        // creo jugador
+        
+        Jugador j = new Jugador();
+        j.setNombre_usuario(nuj.getEmail());
+        j.setId_firebase(nuj.getId_firebase());
+        
+        if (nuj.getName().trim().length() > 0) {
+            j.setNombre(nuj.getName());
+        }
+                
+        if (nuj.getName().trim().length() > 0) {
+            j.setPerfil(Jugador.PERFIL_JUGADOR);
+        }
+
+        boolean succ = HibernateDao.crearJugador(j);
+        if (!succ) {
+            hr.setResponse("Fallo guardado el Bono");
+        }
+        hr.setResult(j);
+        hr.setSuccess(succ);
+        return hr;
+
+    }
+
+    public static HiberRespuesta validarBonoExperienca(Integer bono, String motivo, Personaje pj) {
+
         HiberRespuesta hr = new HiberRespuesta();
         String vacio = "Llene todos los campos para crear una nueva Campaña.";
-        String bonomal = "El nùmero del bono es invalido";        
-        String pjmal = "El pesonaje no puede recibir experiencia o no existe";        
+        String bonomal = "El nùmero del bono es invalido";
+        String pjmal = "El pesonaje no puede recibir experiencia o no existe";
 
         // Validar campos vacios
         if (motivo.trim().equals("") || bono == null) {
@@ -146,33 +198,30 @@ public class Validations {
             hr.setSuccess(false);
             return hr;
         }
-        
-        
-       //Personaje pj = HibernateDao.obtenerPersonajePorId(Long.parseLong(idpj));
-        
-        if (pj == null){
+
+        //Personaje pj = HibernateDao.obtenerPersonajePorId(Long.parseLong(idpj));
+        if (pj == null) {
             hr.setResponse(pjmal);
             hr.setSuccess(false);
             return hr;
         }
-        
-        
+
         BonoExp be = new BonoExp();
         be.setAplicado(false);
         be.setBono(bono);
         be.setFecha(new Date());
         be.setMotivo(motivo);
         be.setPj(pj);
-        
+
         boolean succ = HibernateDao.crearBonoExp(be);
-        if (!succ){
+        if (!succ) {
             hr.setResponse("Fallo guardado el Bono");
         }
         hr.setSuccess(succ);
         return hr;
     }
-    
-    public class BonoExpFormValidator implements Validator{	
+
+    public class BonoExpFormValidator implements Validator {
 
         @Override
         public boolean supports(Class<?> type) {
@@ -182,9 +231,9 @@ public class Validations {
         @Override
         public void validate(Object o, Errors errors) {
             ValidationUtils.rejectIfEmptyOrWhitespace(
-			errors, "bono", "mal el bono");
+                    errors, "bono", "mal el bono");
             ValidationUtils.rejectIfEmptyOrWhitespace(
-			errors, "motivo", "mal el motivo");
+                    errors, "motivo", "mal el motivo");
         }
     }
 }
