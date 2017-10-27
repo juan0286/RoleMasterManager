@@ -41,9 +41,11 @@ public class JugadorRestController {
 //        return list;
 //    }
     
+
+   // GET LISTA DE OBJETOS
     @RequestMapping(value = "/idiomas", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody
-    List<Idioma> listAllUsers() {
+    List<Idioma> listAll_Idiomas() {
         Set<Idioma> set = HibernateDao.todosLosIdiomas();
         List<Idioma> list = new ArrayList<Idioma>(set);
         System.out.println("users.size(): " + list.size());
@@ -51,7 +53,7 @@ public class JugadorRestController {
         return list;
     }
 
-    @GetMapping("/customers/{id}")
+    @GetMapping(value = "/getjugador/{id}", produces = "application/json")
     public ResponseEntity getJugador(@PathVariable("id") String id) {
 
         Jugador j = new Jugador();
@@ -77,7 +79,9 @@ public class JugadorRestController {
 //
 //        return new ResponseEntity(j, HttpStatus.OK);
 //    }
- @RequestMapping(value = "/nuevoJugador", method = RequestMethod.POST, produces = "application/json")
+    
+    
+ @RequestMapping(value = "/postnuevoJugador", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     ResponseEntity createJugador( @RequestBody NuevoUsuarioJugador nuj ) {
         Jugador j = new Jugador();
@@ -90,7 +94,7 @@ public class JugadorRestController {
         return new ResponseEntity(j, HttpStatus.OK);
     }
     
-    @DeleteMapping("/customers/{id}")
+    @DeleteMapping("/borrarjugador/{id}")
     public ResponseEntity deleteJugador(@PathVariable String id) {
 
         System.out.println("se supone que borro algo");
@@ -98,7 +102,7 @@ public class JugadorRestController {
 
     }
 
-    @PutMapping("/customers/{id}")
+    @PutMapping("/putactualizarjugador/{id}")
     public ResponseEntity updateJugador(@PathVariable String id, @RequestBody Jugador j) {
         return new ResponseEntity(j, HttpStatus.OK);
     }
