@@ -166,7 +166,10 @@ public class Validations {
         Jugador j = new Jugador();
         j.setNombre_usuario(nuj.getEmail());
         j.setId_firebase(nuj.getId_firebase());
+        j.setPassword("pass123");
         
+        Date d = new Date();
+        j.setCumple(d);
         if (nuj.getName().trim().length() > 0) {
             j.setNombre(nuj.getName());
         }
@@ -177,7 +180,7 @@ public class Validations {
 
         boolean succ = HibernateDao.crearJugador(j);
         if (!succ) {
-            hr.setResponse("Fallo guardado el Bono");
+            hr.setResponse("Fallo guardado del Jugador");
         }
         hr.setResult(j);
         hr.setSuccess(succ);
