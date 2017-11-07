@@ -125,7 +125,7 @@ public class Validations {
         cNew.setNombre(nombreCampaign);
         cNew.setMundo(mundo);
 
-        if (!HibernateDao.CrearCampaignYAddAlMaster(cNew, m)) {
+        if (!HibernateDao.crearCampaignYAddAlMaster(cNew, m)) {
             hr.setSuccess(false);
             hr.setResponse(errorGuardado);
             return hr;

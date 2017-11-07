@@ -40,6 +40,10 @@ public class CampaignController {
         
         Master m = (Master) session.getAttribute("usuarioLogueado");
         
+        if (m == null){
+            model = new ModelAndView("redirect:/login");
+        return model;
+        }
         HiberRespuesta hr = Validations.validarNuevaCampaign(nombreCampaign,nombreMundo,fechaMundo, m);
        
         if (!hr.isSuccess()){
