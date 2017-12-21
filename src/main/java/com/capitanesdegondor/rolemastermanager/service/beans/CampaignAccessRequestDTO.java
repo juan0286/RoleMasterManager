@@ -22,7 +22,7 @@ public class CampaignAccessRequestDTO {
 
     private long id_jugador;
 
-    private int status;
+    private CampaignAccessRequest.estado status;
 
     public CampaignAccessRequestDTO() {
     }
@@ -68,11 +68,11 @@ public class CampaignAccessRequestDTO {
         this.id_jugador = id_jugador;
     }
 
-    public int getStatus() {
+    public CampaignAccessRequest.estado getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(CampaignAccessRequest.estado status) {
         this.status = status;
     }
 

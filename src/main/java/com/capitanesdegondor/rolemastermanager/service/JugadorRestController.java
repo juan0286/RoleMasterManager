@@ -13,12 +13,12 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.websystique.spring.HibernateDao;
 import com.websystique.spring.dao.CampaignDao;
-import com.websystique.spring.model.BonoExp;
+import com.websystique.spring.model.bono.BonoExp;
 import com.websystique.spring.model.Campaign;
 import com.websystique.spring.model.CampaignAccessRequest;
 import com.websystique.spring.model.Jugador;
 import com.websystique.spring.model.Master;
-import com.websystique.spring.model.Objeto;
+import com.websystique.spring.model.objetos.Objeto;
 import com.websystique.spring.model.Personaje;
 import com.websystique.spring.model.caractPj.Habilidades;
 import com.websystique.spring.model.caractPj.Idioma;
@@ -96,7 +96,7 @@ public class JugadorRestController {
             CampaignAccessRequest car = new CampaignAccessRequest();
             Date d = new Date();
             car.setFecha(d);
-            car.setStatus(0);
+            car.setStatus(CampaignAccessRequest.estado.ESPERA);
             HibernateDao.crearCar(car,card.getId_jugador(), card.getCdto().getId_campaign());
 
         } catch (Exception ex) {
@@ -244,13 +244,35 @@ public class JugadorRestController {
         return new ResponseEntity(id, HttpStatus.OK);
 
     }
-/*
-    @DeleteMapping("/anularCar/{id}")
+
+    @RequestMapping(value = "/borrarCard", method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity borrar(@RequestBody CampaignAccessRequestDTO card) {
+            System.out.println("se supone que borro algo");
+        try{
+            HibernateDao.borrarCampaignAccessRequest(card.getId_car(), card.getId_jugador(), card.getCdto().getId_campaign());
+        }catch(Exception e ){
+            return new ResponseEntity(HttpStatus.EXPECTATION_FAILED);
+        }
+        JsonObject j = new JsonObject();
+        j.addProperty("Transaccion", "ok");
+        return new ResponseEntity(j,HttpStatus.OK);
+
+    }
+    
+    
+    
+    @DeleteMapping("/anularCar")
     public ResponseEntity deleteCampaignAccessRequest(
             @RequestBody CampaignAccessRequestDTO card) {
 
         System.out.println("se supone que borro algo");
-        return new ResponseEntity(id, HttpStatus.OK);
+        try{
+            HibernateDao.borrarCampaignAccessRequest(card.getId_car(), card.getId_jugador(), card.getCdto().getId_campaign());
+        }catch(Exception e ){
+            return new ResponseEntity(HttpStatus.EXPECTATION_FAILED);
+        }
+        String hola ="si";
+        return new ResponseEntity(hola,HttpStatus.OK);
 
     }
 
@@ -258,7 +280,7 @@ public class JugadorRestController {
     public ResponseEntity updateJugador(@PathVariable String id, @RequestBody Jugador j) {
         return new ResponseEntity(j, HttpStatus.OK);
     }
-*/
+
     
     //    @PostMapping(value = "/customers")
 //    public ResponseEntity createJugador(@RequestBody NuevoUsuarioJugador nuj) {

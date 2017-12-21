@@ -7,7 +7,7 @@ package com.capitanesdegondor.rolemastermanager.validations;
 
 import com.capitanesdegondor.rolemastermanager.service.beans.NuevoUsuarioJugador;
 import com.websystique.spring.HibernateDao;
-import com.websystique.spring.model.BonoExp;
+import com.websystique.spring.model.bono.BonoExp;
 import com.websystique.spring.model.Campaign;
 import com.websystique.spring.model.Jugador;
 import com.websystique.spring.model.Master;
@@ -58,8 +58,8 @@ public class Validations {
         return hr;
     }
 
-    public static HiberRespuesta validarVerCampaign(String idCampaign) {
-        long id = Long.parseLong(idCampaign, 10);
+    public static HiberRespuesta validarVerCampaign(long id) {
+       // long id = Long.parseLong(idCampaign, 10);
 
         HiberRespuesta hr = new HiberRespuesta();
         String vacio = "Esta Campaña actualmente no existe.";

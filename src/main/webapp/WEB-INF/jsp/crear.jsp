@@ -36,14 +36,25 @@
 
         <h3>Campaña: ${campaActual.getNombre()}</h3>
 
-        <a href="${campaActual.nombre}/solicitudes">Ver Solicitudes</a>        
-        
-        <div class="campaignItem">
-            <a href="invitarJugador.htm"> Invitar Jugador</a>
-        </div>
-                            
-        <%@ include file="/WEB-INF/jsp/views/jugadorItem.jsp" %>
-                            
+        <table id="creadores" align="center" border="2" width="50%">
+
+            <tr >                
+                <td><a href="nuevoPersonaje">Crear Personaje</a></td>
+                <td></td>
+                <td></td>                
+            </tr>
+            <tr >
+                <td><a href="nuevoObjetoTipo">Crear Objeto Tipo</a></td>
+                <td><a href="nuevoObjeto">Crear Objeto</a></td>
+                <td><a href="nuevoArma">Crear Arma</a></td>
+            </tr>
+            <tr >
+                <td><a href="nuevoArea">Crear Area</a></td>
+                <td ></td>
+                <td ></td>
+            </tr>                                 
+        </table>
+
         <%@ include file="/WEB-INF/jsp/views/footer.jsp" %>
 
     </body>

@@ -32,7 +32,7 @@
     <body>
         <div class="login-page">
             <div class="form" >
-                <form class="register-form" action="registrar.htm" method="POST">
+                <form class="register-form" action="registrar" method="POST">
                     <span>Nombre</span>
                     <input type="text" placeholder="nombre" name="nombre"/>
                     <span>Usuario</span>

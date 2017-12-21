@@ -18,24 +18,28 @@
         <%@ include file="/WEB-INF/jsp/views/header.jsp" %>
 
         <h2>Master ${usuarioLogueado.usuario}</h2>
+        <h2> Campañas </h2>
         <div id="campignsZone">
             <c:choose>
-                <c:when test="${tieneCampas == true}">
-                    <h2> Campañas </h2>
+                <c:when test="${tieneCampas == true}">                    
                     <c:forEach items="${usuarioLogueado.getCampaigns()}" var="campaign" >
+
                         <div class="campaignItem">
-                            <a href="verCampaign?id=${campaign.getId_campaign()}">
+                            <a href="${usuarioLogueado.usuario}/${campaign.getNombreURL()}">
+                            <!--<a href="verCampaign?id=${campaign.getId_campaign()}">-->
                                 <span>${campaign.getNombre()}</span>
-                                
                             </a>
                         </div>
-                        <br />
-                    </c:forEach>
-                    <br />
+                    </c:forEach>                    
                 </c:when>                    
             </c:choose>
-            <div class="campaignItem">
-                <a href="nuevaCampaign.htm"> Crear campaña</a>
+            <div class="campaignItem" style="display: table;">
+                <a href="${usuarioLogueado.usuario}/nuevaCampaign"> 
+                    <!--<span style="display: table-row;height: 50%">Crear campaña</span>-->
+                    <img src="<c:url value="/img/iconPlus.png" />"  width="70" height="70" 
+                         style="margin-top: 5%; display: block;
+                         margin: auto;"/>
+                </a>
             </div>
         </div>
     </body>

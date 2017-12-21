@@ -9,11 +9,11 @@ and open the template in the editor.
 */
 
 body {
-    background: #76b852; /* fallback for old browsers */
-    background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-    background: -moz-linear-gradient(right, #76b852, #8DC26F);
-    background: -o-linear-gradient(right, #76b852, #8DC26F);
-    background: linear-gradient(to left, #76b852, #8DC26F);
+    background: #F7FE2E; /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, #e9f42c, #e7ed82);
+    background: -moz-linear-gradient(right, #e9f42c, #e7ed82);
+    background: -o-linear-gradient(right, #e9f42c, #e7ed82);
+    background: linear-gradient(to left, #e9f42c, #e7ed82);
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;      
@@ -32,9 +32,9 @@ body {
 }
 
 .header h2 {text-align: center;
--webkit-box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75);
-box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75);
+            -webkit-box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75);
+            box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75);
 }
 .header #logger {font-size: 10px; text-align: right}
 
@@ -58,6 +58,49 @@ box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75);
     padding-top: 3px;
 }
 
+#campignsZone{
+    background-color: #FE2E2E;
+    padding: 10px;
+    /*    position: relative;
+        display: inline-flex;*/
+    display: inline-table;  
+}
+
+#campignsZone a{
+    height: 100%;
+    width:  100%;
+    display: inline-flex;    
+}
+
+#campignsZone .campaignItem{
+    background-color: #FFBF00;
+    float: left;
+    display: flex;
+    margin: 10px;    
+    height: 75px;
+    width: 275px;
+    border: 1px solid black;
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+#campignsZone .campaignItem span{
+    font-weight:normal;
+    color:#CF0902;
+    letter-spacing:0pt;
+    word-spacing:4pt;
+    font-size:20px;
+    text-align: center;
+    font-family:comic sans, comic sans ms, cursive, verdana, arial, sans-serif;    
+    width: 100%;
+}
+
+.solicitudestable{
+    text-align: center;
+    width: 70%;
+    margin: auto;
+}
+
 .pjtable td{
     text-align: center;
     width: 10%;
@@ -76,10 +119,14 @@ box-shadow: 10px 10px 33px 0px rgba(0,0,0,0.75);
 .pjtable td.hoveroption{
     color: blue;
     font-size: 10px;   
-     width: 10%;
+    width: 10%;
 }
 
 .pjdetail td{    
     font-size: 10px;
     background-color: yellow;
+}
+
+#creadores td{
+    padding: 25px;
 }

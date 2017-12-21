@@ -11,6 +11,7 @@ import com.websystique.spring.HibernateDao;
 import com.websystique.spring.model.Campaign;
 import com.websystique.spring.model.Jugador;
 import com.websystique.spring.model.Master;
+import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,10 +50,14 @@ public class LoguearController {
         }
 
         Master m = (Master) hr.getResult();
+        HashMap<String,Long> campas = new HashMap<>();
+        for(Campaign c : m.getCampaigns()){
+            campas.put(c.getNombreURL(), c.getId_campaign());            
+        }
+        session.setAttribute("idCampas", campas);
         session.setAttribute("usuarioLogueado", m);
-        model = new ModelAndView("redirect:/home");
-        //model.setViewName("home");
-
+        model = new ModelAndView("redirect:/m/" + m.getUsuario());        
+        
         return model;
     }
 
@@ -60,7 +65,7 @@ public class LoguearController {
     public String desloguear(            
             HttpSession session) {
         session.setAttribute("usuarioLogueado", null);
-        return "home";
+        return "login";
     }
     
     

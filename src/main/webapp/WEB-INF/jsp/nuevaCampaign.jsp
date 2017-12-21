@@ -19,7 +19,7 @@
         <%@ include file="/WEB-INF/jsp/views/header.jsp" %>
         <div id="center" >
             <h1>Crear Campaña</h1>
-            <form action="salvarcampaign.htm" method="POST">
+            <form action="salvarcampaign.do" method="POST">
                 <p>
                     <span>Nombre de Campaña</span>
                     <input type="text" placeholder="Campaña" name="nombreCampaign"/>
