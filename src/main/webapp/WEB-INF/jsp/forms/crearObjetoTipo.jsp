@@ -18,7 +18,7 @@
         <title>Nuevo Tipo de Objeto</title>
     </head>
     <body>
-        <%@ include file="/WEB-INF/jsp/views/header.jsp" %>
+        <%@ include file="/WEB-INF/jsp/includes/header.jsp" %>
         <div id="center" >
             <div > <a href="verCampaign?id=${campaActual.getId_campaign()}">VOLVER</a></div>
      

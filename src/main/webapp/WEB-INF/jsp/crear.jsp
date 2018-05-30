@@ -9,7 +9,7 @@
 <%@ page import="com.websystique.spring.model.caractPj.Hab_secundaria_desarrollo" %>
 
 
-<%@ include file="/WEB-INF/jsp/views/include.jsp" %>
+<%@ include file="/WEB-INF/jsp/includes/include.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,7 +32,7 @@
         </script>
     </head>
     <body>
-        <%@ include file="/WEB-INF/jsp/views/header.jsp" %>
+        <%@ include file="/WEB-INF/jsp/includes/header.jsp" %>
 
         <h3>Campaña: ${campaActual.getNombre()}</h3>
 
@@ -55,7 +55,7 @@
             </tr>                                 
         </table>
 
-        <%@ include file="/WEB-INF/jsp/views/footer.jsp" %>
+        <%@ include file="/WEB-INF/includes/footer.jsp" %>
 
     </body>
 </html>

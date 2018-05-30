@@ -52,6 +52,13 @@ public class SolicitudesController {
             ModelMap mmap, HttpSession session) {
 
         ModelAndView model = new ModelAndView();
+        Master m = (Master) session.getAttribute("usuarioLogueado");
+       
+        if (m == null) {
+            model = new ModelAndView("redirect:/login");
+            return model;
+        } 
+        
         boolean existe = URLgetter.usuarioCampaignValido(session, usuario, campaign);
 
         if (!existe) {
@@ -71,7 +78,7 @@ public class SolicitudesController {
             }
         }
         //model.setViewName(URLgetter.getUrl(session) + "/solicitudes");
-        model.setViewName("solicitudes");
+        model.setViewName("ngSolicitudes");
         return model;
     }
 
@@ -81,6 +88,9 @@ public class SolicitudesController {
             @RequestBody SolicitudDTO s, HttpSession session
     ) {
 
+        if (session.getAttribute("usuarioLogueado") == null) {                        
+           return new ResponseEntity("fail", HttpStatus.NOT_MODIFIED);
+        } 
         Master user = (Master) session.getAttribute("usuarioLogueado");
         long id_car = s.getId_car();
         String accion = s.getAccion();

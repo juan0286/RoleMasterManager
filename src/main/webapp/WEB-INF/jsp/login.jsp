@@ -5,12 +5,12 @@
 --%>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page contentType="text/html" pageEncoding="windows-1252"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <%
     session.setAttribute("usuarioLogueado", null);
-    %>
+%>  
+<%@ include file="/WEB-INF/jsp/includes/include.jsp" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
@@ -53,14 +53,18 @@
                     <span>Contraseña</span>
                     <input type="password" name="password"/>
                     <span class="error">${errorDetail}</span>
-                    <button>loguear</button>
+
+                    <button>loguear
+                    </button>
                     <p class="message">no estas registrado? <a href="#">Crea una cuenta</a></p>
                 </form>
-                
+
             </div>
         </div>
         <div id="allpage">
             <img src="<c:url value="/img/loading.gif" />" class="imgcenter" width="80" height="80"  />
         </div>
+
+
     </body>
 </html>

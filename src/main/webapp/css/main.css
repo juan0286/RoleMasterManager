@@ -8,8 +8,57 @@ and open the template in the editor.
     Author     : TiranoJuan
 */
 
+.fullcard.mdl-card{
+    width: 94%;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.optionsButtonFloating{
+    position: fixed;
+    display: block;
+    right: 0;
+    bottom: 0;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    z-index: 900;
+}
+.genericForm{
+    margin-left: 20px;    
+    border: 3px black; border-style: solid double;
+    padding: 5px;
+    width: 35%;
+    margin-top: 20px;
+}
+
+.genericList{
+    margin-left: 20px;        
+    padding: 5px;
+    width: 35%;
+    margin-top: 10px;
+}
+
+.titleForm{
+    display: block;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    size: 20px;
+}
+/*
+.demo-card-wide.mdl-card {
+    width: 512px;
+}
+.demo-card-wide > .mdl-card__title {
+    color: #fff;
+    height: 176px;
+    background: url('../assets/demos/welcome_card.jpg') center / cover;
+}
+.demo-card-wide > .mdl-card__menu {
+    color: #fff;
+}*/
+/*
 body {
-    background: #F7FE2E; /* fallback for old browsers */
+    
     background: -webkit-linear-gradient(right, #e9f42c, #e7ed82);
     background: -moz-linear-gradient(right, #e9f42c, #e7ed82);
     background: -o-linear-gradient(right, #e9f42c, #e7ed82);
@@ -43,17 +92,91 @@ body {
     font-size: 12px;
     margin-bottom: 5px;
 }
+*/
+/*
+meter {
+  
+  display: block;
+  margin: 0 auto;
+  
+  width: 550px;
+  height: 25px;
+  
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  
+   Firefox 
+  background: none;  Required to get rid of the default background prop. 
+  background-color: whiteSmoke;  
+  box-shadow: 0 5px 5px -5px #333 inset;
+}
+
+.ppMetter::-webkit-meter-optimum-value{
+    background: blue;  Green 
+}
+.pvMetter::-webkit-meter-optimum-value{
+    background: black;  Green 
+}*/
+.ppMeter{
+    width: 500px;    
+}
+.pvMeter{    width: 500px;
+    
+}
+
+.pvMeter meter::-webkit-meter-optimum-value{
+    width: 500px;    
+    background: red; /* Green */    
+}
+
+/* WebKit */
+.pvMeter meter::-webkit-meter-bar {
+    background: #EEE;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
+    border-radius: 3px;
+}
+
+.pvMeter meter::-webkit-meter-optimum-value,
+.pvMeter meter::-webkit-meter-suboptimum-value,
+.pvMeter meter::-webkit-meter-even-less-good-value {
+    border-radius: 3px;
+}
+
+.pvMeter meter::-webkit-meter-optimum-value {
+    background: #86CC00;
+}
+
+.pvMeter meter::-webkit-meter-suboptimum-value {
+    background: #FFDB1A;
+}
+
+.pvMeter meter::-webkit-meter-even-less-good-value  {
+    background: #CC4600;
+}
+
+
+
+/* WebKit */
+.pvMeter meter::-webkit-meter-bar {
+    background: #EEE;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
+    border-radius: 3px;
+}
+
 
 #jugadores{
-    display: block;
-    border: #EF3B3A;    
-    margin: 5px;
+    margin-left:  5%;
+    margin-right: 5%;
 }
 .jugadorItem{
     display: block;
     background-color: activeborder;
     width: 50%;
-    /*height: 75px;*/
+
     padding-bottom: 3px;
     padding-top: 3px;
 }
@@ -61,8 +184,7 @@ body {
 #campignsZone{
     background-color: #FE2E2E;
     padding: 10px;
-    /*    position: relative;
-        display: inline-flex;*/
+
     display: inline-table;  
 }
 

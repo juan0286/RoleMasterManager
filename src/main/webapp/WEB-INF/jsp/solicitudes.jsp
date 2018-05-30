@@ -12,12 +12,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<%@ include file="/WEB-INF/jsp/views/include.jsp" %>
+<%@ include file="/WEB-INF/jsp/includes/include.jsp" %>
 <!DOCTYPE html>
-<html>
+<html ng-app="cdgApp">
     <head>        
         <link href="<c:url value="/css/main.css" />" rel="stylesheet">
-        <script type="text/javascript">
+<!--        <script type="text/javascript">
             $(document).ready(function () {
                 $('.btn').click(
                         function () {
@@ -58,11 +58,11 @@
                
             });
 
-        </script>
+        </script>-->
         <title>Solicitudes de Acceso a Campaña</title>
     </head>
-    <body>
-        <%@ include file="/WEB-INF/jsp/views/header.jsp" %>
+    <body ng-controller="SolicitudesController" ng-init="getSolicitudes()">>
+        <%@ include file="/WEB-INF/jsp/includes/header.jsp" %>
         <div id="center" >
             <h1>Solicitudes</h1>
 

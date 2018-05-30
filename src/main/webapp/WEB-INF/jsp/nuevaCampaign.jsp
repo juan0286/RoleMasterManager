@@ -16,7 +16,7 @@
         <title>Crear Campaña</title>
     </head>
     <body>
-        <%@ include file="/WEB-INF/jsp/views/header.jsp" %>
+        <%@ include file="/WEB-INF/jsp/includes/header.jsp" %>
         <div id="center" >
             <h1>Crear Campaña</h1>
             <form action="salvarcampaign.do" method="POST">

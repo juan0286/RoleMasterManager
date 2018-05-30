@@ -216,11 +216,11 @@ public class Validations {
         be.setMotivo(motivo);
         be.setPj(pj);
 
-        boolean succ = HibernateDao.crearBonoExp(be);
-        if (!succ) {
+        long succ = HibernateDao.crearBonoExp(be);
+        if (succ!=0l) {
             hr.setResponse("Fallo guardado el Bono");
         }
-        hr.setSuccess(succ);
+        hr.setSuccess(succ!=0l);
         return hr;
     }
 

@@ -77,7 +77,11 @@ public class CampaignController {
             HttpSession session, ModelMap mmap) {
 
         ModelAndView model = null;        
-        
+        Master m = (Master) session.getAttribute("usuarioLogueado");
+        if (m == null) {
+            model = new ModelAndView("redirect:/login.do");
+            return model;
+        }
         boolean existe = URLgetter.usuarioValido(session, usuario);
         try {
             campaign = URLEncoder.encode(campaign, "UTF-8");

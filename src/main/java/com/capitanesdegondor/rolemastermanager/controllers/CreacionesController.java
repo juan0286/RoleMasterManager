@@ -176,7 +176,7 @@ public class CreacionesController {
         }
 
         model.addObject("to", to);
-        model.setViewName("show/showObjetoTipo");
+        model.setViewName("views/showObjetoTipo");
         return model;
     }
 
@@ -222,6 +222,10 @@ public class CreacionesController {
         ppm.setOpciones(lopp);
         HashMap<String,Long> campas = (HashMap<String,Long>) session.getAttribute("idCampas");
         
+        if (!campas.containsKey(campaign)){
+            model.addObject("premioPreguntaForm", new PremioPreguntaForm());
+            model.addObject("error", "no existe esta campaña");
+        }
         long idCampaActual = campas.get(campaign);
         Set<Personaje> pjs = HibernateDao.todosLosPjsDeUnaCampaign(idCampaActual);
         List<Personaje>  listPjs = new ArrayList<Personaje>(pjs);
@@ -297,7 +301,7 @@ public class CreacionesController {
         HibernateDao.crearPremioPregunta(pp);
 
         model.setViewName("redirect:verPremioPregunta/" + pp.getId_pp());
-        //model.setViewName("redirect:show/showPremioPregunta/"+pp.getId_pp());
+        //model.setViewName("redirect:views/showPremioPregunta/"+pp.getId_pp());
 
         return model;
 
@@ -333,7 +337,7 @@ public class CreacionesController {
         }
 
         model.addObject("pp", pp);
-        model.setViewName("show/showPremioPregunta");
+        model.setViewName("views/showPremioPregunta");
         return model;
     }
 

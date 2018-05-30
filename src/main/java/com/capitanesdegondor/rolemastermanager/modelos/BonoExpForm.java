@@ -17,8 +17,10 @@ public class BonoExpForm {
     
     private int bono;
         
-    private String Motivo;
-
+    private String motivo;
+    
+    private long id_pj;    
+    
     public BonoExpForm() {
     }
 
@@ -34,11 +36,22 @@ public class BonoExpForm {
     @NotNull
     @NotBlank
     public String getMotivo() {
-        return Motivo;
+        return motivo;
     }
 
+    @NotNull
+    public long getId_pj() {
+        return id_pj;
+    }
+
+    public void setId_pj(long id_pj) {
+        this.id_pj = id_pj;
+    }
+
+    
+    
     public void setMotivo(String Motivo) {
-        this.Motivo = Motivo;
+        this.motivo = Motivo;
     }
     
     
